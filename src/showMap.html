@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>小字マップ</title>
+    <!--  MapLibre読み込み  -->
+    <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css">
+    <!--  スクリプトファイル読み込み -->
+    <script src="mapscript.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="mapstyle.css"/>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="topButtonArea">
+        <button id="location" onClick="handleLocation()">&#10683;</button>
+        <button id="menuButton" onClick="handleMenuPopup()">&#x22EF;</button>
+    </div>
+    <div id="menuPopup">
+        <p>背景地図の不透明度</p>
+        <input type="range" id="opacityBase" min="0" max="100" value="50" onChange="handleBaseOpacityChange(this.value)">
+        <p>小字情報の不透明度</p>
+        <input type="range" id="opacityTop" min="0" max="100" value="50" onChange="handleTopOpacityChange(this.value)">
+        <p>背景地図</p>
+        <div>
+            <input type="radio" name="basemap" id="gsi_pale" value="gsi_pale" onChange="handleBasemapSelect(this.value)" checked/>
+            <label for="gsi_pale">地理院地図(淡色)</label><br>
+            <input type="radio" name="basemap" id="gsi_std" value="gsi_std" onChange="handleBasemapSelect(this.value)"/>
+            <label for="gsi_std">地理院地図(標準)</label><br>
+            <input type="radio" name="basemap" id="gsi_seamless" value="gsi_seamless" onChange="handleBasemapSelect(this.value)"/>
+            <label for="gsi_seamless">最新空中写真</label><br>
+            <input type="radio" name="basemap" id="gsi_4550" value="gsi_4550" onChange="handleBasemapSelect(this.value)"/>
+            <label for="gsi_4550">空中写真<br>（1945-1950：S20-S25）</label><br>
+            <input type="radio" name="basemap" id="gsi_6169" value="gsi_6169" onChange="handleBasemapSelect(this.value)"/>
+            <label for="gsi_6169">空中写真<br>（1961-1969：S36-S44）</label>
+        </div>
+    </div>
+    <div id="header">
+        <h1><a href="../index.html">小字マップ</a></h1>
+    <div>
+    <script>initMap(src="json_1706693743")</script>
+</body>
+
+</html>
