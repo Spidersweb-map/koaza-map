@@ -231,7 +231,7 @@ function getRegionName(region) {
     if (region == "(unknown)") {
         return "(所属不明)"
     } else {
-        const lastChar = ["村","町","宿","区"];
+        const lastChar = ["村","町","宿","区","組"];
         var gun = region.split("(")[1].replace(")","");
         var mura = region.split("(")[0];
         if (gun == "区部") {
@@ -239,7 +239,7 @@ function getRegionName(region) {
         } else {
             gun += "郡";
         };
-        if (!lastChar.includes(mura.slice(-1)) && !mura.endsWith("新田") && !mura.endsWith("丁目")) {
+        if (!lastChar.includes(mura.slice(-1)) && !mura.includes("新田") && !mura.endsWith("丁目")) {
             mura += "村";
         };
         return gun + mura;
