@@ -78,3 +78,34 @@ h1 {
 .blue-text {
     color: #0085CF;
 }
+
+.icon-big {
+    width: 1.5em;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 700px){
+
+    body {
+        padding: 10px 0px;
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 10px;
+        margin: 10px 5px;
+    }
+        
+    .title-span h2 {
+        display: block;
+    }
+    
+    .koaza-table {
+        margin: 5px;
+    }
+
+
+}
+
+
+

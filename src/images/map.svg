@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="100" height="100" viewBox="0, 0, 100, 100">
+  <g id="Background">
+    <rect x="0" y="0" width="100" height="100" fill="#000000" fill-opacity="0"/>
+  </g>
+  <g id="レイヤー_1">
+    <g>
+      <path d="M2,2 L98,2 L98,98 L2,98 L2,2 z" fill="#EEEEEE"/>
+      <g>
+        <path d="M28,38 L48,28 L56,18 L56,2" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M50,48 L72,42 L72,24 L56,18" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M72,24 C72,24 84,14 84,14 L90,2" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M72,42 C72,42 82,54 82,54 C82,54 88,72 88,72 L88,88 L90,98" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M82,54 L90,50 L98,40" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M28,38 C28,38 20,50 20,50 C20,50 28,74 28,74 L44,80 C44,80 50,88 50,88 C50,88 52,98 52,98" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M28,74 L18,78 L10,84 L14,92 L6,94 L2,98" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18,78 L10,74 L2,60" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18,22 C18,22 6,26 6,26 L2,26" fill-opacity="0" stroke="#0085CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20,2 C20,2 18,22 18,22 C18,22 28,38 28,38 L50,48 L70,66 L74,92 L76,98" fill-opacity="0" stroke="#AB1500" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M2,2 L98,2 L98,98 L2,98 z" fill-opacity="0" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </g>
+</svg>
