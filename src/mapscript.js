@@ -239,7 +239,9 @@ function getRegionName(region) {
         } else {
             gun += "郡";
         };
-        if (!lastChar.includes(mura.slice(-1)) || !mura.endswith("新田")) {mura += "村";};
+        if (!lastChar.includes(mura.slice(-1)) && !mura.endsWith("新田") && !mura.endsWith("丁目")) {
+            mura += "村";
+        };
         return gun + mura;
     };
 };

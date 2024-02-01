@@ -23,8 +23,9 @@
 <body>
     <div id="map"></div>
     <div id="topButtonArea">
-        <button id="location" onClick="handleLocation()">&#10683;</button>
-        <button id="menuButton" onClick="handleMenuPopup()">&#x22EF;</button>
+<!--        <button id="location" onClick="handleLocation()">&#10683;</button>-->
+        <button id="location" onClick="handleLocation()"><img alt="location" class="icon-img" src="images/location.svg"></button>
+        <button id="menuButton" onClick="handleMenuPopup()"><img alt="layers" class="icon-img" src="images/layers.svg"></button>
     </div>
     <div id="menuPopup">
         <p>背景地図の不透明度</p>
@@ -46,7 +47,8 @@
         </div>
     </div>
     <div id="header">
-        <h1><a href="../index.html">小字マップ</a></h1>
+        <h1><a href="showMap.html" id="header-title">小字マップ</a></h1>
+        <p><a href="../index.html" id="header-about">About</a></p>
     <div>
     <script>initMap(src="json_1706693743")</script>
 </body>
