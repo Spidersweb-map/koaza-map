@@ -6,6 +6,7 @@ https://spidersweb-map.github.io/koaza-map/pages/北多摩郡.html
 https://spidersweb-map.github.io/koaza-map/pages/北豊島郡.html
 https://spidersweb-map.github.io/koaza-map/pages/北都留郡.html
 https://spidersweb-map.github.io/koaza-map/pages/区部.html
+https://spidersweb-map.github.io/koaza-map/pages/千葉郡.html
 https://spidersweb-map.github.io/koaza-map/pages/南多摩郡.html
 https://spidersweb-map.github.io/koaza-map/pages/南豊島郡.html
 https://spidersweb-map.github.io/koaza-map/pages/大住郡.html
