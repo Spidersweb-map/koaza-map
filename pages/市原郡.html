@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="市原郡の小字(地名)を紹介しています">
+    <meta name="keyword" content="小字, 地名, 歴史, 地理, 地図, 市原郡">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=”icon” href=“../src/images/favicon.ico”>
+    <link rel="stylesheet" href="../src/main_3.css" type="text/css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("a[href^='#']").click(function() {
+            var speed = 200;
+            var href = $(this).attr("href");
+            var target = $(href == "#" || href == "" ? 'html' : href);
+            var position = target.offset().top;
+            $("html, body").animate({scrollTop: position}, speed, "swing");
+            return false;
+        });
+    });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS498W9N28"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-MS498W9N28');
+    </script>
+    <title>小字マップ | 市原郡</title>
+</head>
+<body>
+    <span><h1 id="page-title">市原郡の小字</h1>&emsp;&emsp;&emsp;<a href="../index.html">&#x21E7;トップ</a></span>
+    <span><p>収録範囲の現在の行政区域：</p></span>
+    
+    <div id="index" class="container">
+        <a href="#八幡_市原">八幡村</a>
+        
+    </div>
+    
+    
+    <div id="八幡_市原" class="container">
+        <div class="title-span">
+            <h2>八幡村<sup><a href="#page-title">^</a><sup></h2>
+            <span> &mdash;  &mdash;  &mdash;  &mdash; </span>
+        </div>
+        <hr>
+        <div class="description">現千葉市中央区の飛地は「千葉市史 史料編３(千葉市史編纂委員会、1980)」(原資料は「村田小字図(M9)」)により記載。</div>
+        <table class="koaza-table">
+            <tr>
+                <th class="koaza-name">小字名</th>
+                <th class="koaza-yomi">読み</th>
+                <th class="koaza-note">備考</th>
+                <th class="koaza-old">地租改正以前の字</th>
+            </tr>
+            
+        </table>
+        
+    </div>
+    <footer><p class="copyright"><small><br>&copy; 2024 Spidersweb</small></p></footer>
+</body>
+</html>
