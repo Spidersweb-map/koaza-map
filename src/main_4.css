@@ -64,16 +64,16 @@ p {
 }
 
 .koaza-yomi {
-    width: 10em;
+    width: 15em;
 }
 
 .koaza-note {
-    width: 20em;
+    width: 30em;
 }
 
-.koaza-old {
+/*.koaza-old {
     width: 20em;
-}
+}*/
 
 .red-text {
     color: #AB1500;
