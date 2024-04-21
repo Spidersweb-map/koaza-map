@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css">
     <!--  スクリプトファイル読み込み -->
-    <script src="mapscript_2.js" charset="UTF-8"></script>
+    <script src="mapscript_3.js" charset="UTF-8"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS498W9N28"></script>
     <script>
@@ -45,12 +45,17 @@
             <input type="radio" name="basemap" id="gsi_6169" value="gsi_6169" onChange="handleBasemapSelect(this.value)"/>
             <label for="gsi_6169">空中写真<br>（1961-1969：S36-S44）</label>
         </div>
+        <p>ほか情報</p>
+        <div>
+            <input type="checkbox" name="mapmesh" id="mapmesh" value="changed" onChange="handleMapmeshSelect(this)"/>
+            <label for="mapmesh">図郭メッシュ</label>
+        </div>
     </div>
     <div id="header">
         <h1><a href="showMap.html" id="header-title">小字マップ</a></h1>
         <p><a href="../index.html" id="header-about">About</a></p>
     <div>
-    <script>initMap(src="json_1713529825")</script>
+    <script>initMap(src="json_1713691239")</script>
 </body>
 
 </html>
