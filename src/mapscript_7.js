@@ -292,8 +292,9 @@ function getRegionNameOaza(oaza, region) {
 
 
 function getLinkTextOaza(oaza, region) {
+    const excludeRegion = ["区部", "島嶼部"];
     var gun = region;
-    if (gun != "区部") {gun += "郡"};
+    if (!excludeRegion.includes(gun)) {gun += "郡"};
     return "../pages/" + gun + ".html#" + oaza + "_" + region;
 }
 
