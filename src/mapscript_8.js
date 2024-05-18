@@ -14,7 +14,7 @@ function initMap() {
     document.getElementById("opacityBase").value = queries.opacityBase * 100;
     document.getElementById("opacityTop").value = queries.opacityTop * 100;
     document.getElementById(queries.base).checked = true;
-    document.getElementById("mapmesh").checked = queries.mapmesh;
+    document.getElementById("mapmesh").checked = (queries.mapmesh == 1);
     
     // PMTiles対応
     const protocol = new pmtiles.Protocol();
@@ -340,7 +340,7 @@ function getMapData(url) {
             opacityBase: Number(url.searchParams.get('opacityBase')),
             opacityTop: Number(url.searchParams.get('opacityTop')),
             base: url.searchParams.get('base'),
-            mapmesh: Boolean(url.searchParams.get('mapmesh'))
+            mapmesh: Number(url.searchParams.get('mapmesh'))
         }
         return resultObj
     } else {
@@ -351,7 +351,7 @@ function getMapData(url) {
             opacityBase: 0.5,
             opacityTop: 1.0,
             base: 'gsi_pale',
-            mapmesh: false
+            mapmesh: 0
         };
         Object.entries(defaultObj).forEach(([key,val],idx) => {
             url.searchParams.set(key, val); 
@@ -420,7 +420,7 @@ function handleMapmeshSelect(element) {
     const isVisible = element.checked;
     map.setLayoutProperty('map_mesh', 'visibility', isVisible? 'visible' : 'none');
     map.setLayoutProperty('map_label', 'visibility', isVisible? 'visible' : 'none');
-    url.searchParams.set('mapmesh', isVisible);
+    url.searchParams.set('mapmesh', isVisible? 1 : 0);
     history.replaceState(null, pageName, url);
 };
 
