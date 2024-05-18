@@ -227,7 +227,6 @@ function initMap() {
         loadLayers();
         handleBasemapSelect(queries.base);
         addMapMesh(queries.mapmesh);
-        handleMapmeshSelect(queries.mapmesh);
     });
     
     // 地図の移動を検知
@@ -425,7 +424,7 @@ function handleMapmeshSelect(element) {
 };
 
 
-function addMapMesh(isVisible) {
+function addMapMesh(isVisibleNum) {
     const meshColor = '#FF0000'
     map.addLayer({
         id: 'map_mesh',
@@ -463,8 +462,8 @@ function addMapMesh(isVisible) {
         minzoom: 8
     });
     
-    map.setLayoutProperty('map_mesh', 'visibility', isVisible? 'visible' : 'none');
-    map.setLayoutProperty('map_label', 'visibility', isVisible? 'visible' : 'none');
+    map.setLayoutProperty('map_mesh', 'visibility', (isVisibleNum == 1)? 'visible' : 'none');
+    map.setLayoutProperty('map_label', 'visibility', (isVisibleNum == 1)? 'visible' : 'none');
 };
 
 
