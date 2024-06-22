@@ -247,7 +247,7 @@ function initMap() {
         if (e.features[0].properties.region.includes('・')) {
             let reg_name = e.features[0].properties.region.split('(')[1]
             let tmp_txts = e.features[0].properties.region.split('・').map((oaza) => 
-                '<p class="oaza"><a href=">' 
+                '<p class="oaza"><a href="' 
                 + getLinkText(oaza + '(' + reg_name)
                 + '" target="_blank" rel="noopener noreferrer">'
                 + getRegionName(oaza + '(' + reg_name)
@@ -281,7 +281,7 @@ function initMap() {
     map.on('click', 'big_name', (e) => {
         if (e.features[0].properties.name.includes('・')) {
             let tmp_txts = e.features[0].properties.name.split('・').map((oaza) => 
-                '<p><a href=">' 
+                '<p><a href="' 
                 + getLinkTextOaza(oaza, e.features[0].properties.region)
                 + '" target="_blank" rel="noopener noreferrer">'
                 + getRegionNameOaza(oaza, e.features[0].properties.region)
@@ -292,7 +292,7 @@ function initMap() {
                 .setHTML(
                     '<div class="popup-oaza">'
                     + tmp_txts.join('')
-                    + '<p><入会地</p></div>'
+                    + '<p>入会地</p></div>'
                 ).addTo(map);
         } else if (e.features[0].properties.region != '(旧村)') {
             new maplibregl.Popup({closeButton: false})
