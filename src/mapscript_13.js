@@ -261,7 +261,7 @@ function initMap() {
                     + '</p>'
                     + tmp_txts.join('')
                     + '</div>'
-                .addTo(map);
+                ).addTo(map);
         } else {
             new maplibregl.Popup({closeButton: false})
                 .setLngLat(e.lngLat)
@@ -272,14 +272,14 @@ function initMap() {
                     + getLinkText(e.features[0].properties.region)
                     + '" target="_blank" rel="noopener noreferrer">' 
                     + getRegionName(e.features[0].properties.region)
-                    + '</a></p></div>')
-                .addTo(map);
+                    + '</a></p></div>'
+                ).addTo(map);
         };
     });
     
     // ポップアップ表示(大字名)
     map.on('click', 'big_name', (e) => {
-        if (e.features[0].properties.name.includes('・') {
+        if (e.features[0].properties.name.includes('・')) {
             let tmp_txts = e.features[0].properties.name.split('・').map((oaza) => 
                 '<p><a href=">' 
                 + getLinkTextOaza(oaza, e.features[0].properties.region)
