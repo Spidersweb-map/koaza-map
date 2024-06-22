@@ -246,19 +246,20 @@ function initMap() {
     map.on('click', 'small_name', (e) => {
         if (e.features[0].properties.region.includes('・')) {
             let reg_name = e.features[0].properties.region.split('(')[1]
+            let tmp_txts = e.features[0].properties.region.split('・').map((oaza) => 
+                '<p class="oaza"><a href=">' 
+                + getLinkText(oaza + '(' + reg_name)
+                + '" target="_blank" rel="noopener noreferrer">'
+                + getRegionName(oaza + '(' + reg_name)
+                + '</a></p>'
+            );
             new maplibregl.Popup({closeButton: false})
                 .setLngLat(e.lngLat)
                 .setHTML(
                     '<div class="popup"><p class="koaza">' 
                     + e.features[0].properties.name 
                     + '</p>'
-                    + e.features[0].properties.region.split('・').map((oaza) => 
-                        '<p class="oaza"><a href=">' 
-                        + getLinkText(oaza + '(' + reg_name)
-                        + '" target="_blank" rel="noopener noreferrer">'
-                        + getRegionName(oaza + '(' + reg_name)
-                        + '</a></p>'
-                    ).join('')
+                    + tmp_txts.join('')
                     + '</div>'
                 .addTo(map);
         } else {
@@ -279,17 +280,18 @@ function initMap() {
     // ポップアップ表示(大字名)
     map.on('click', 'big_name', (e) => {
         if (e.features[0].properties.name.includes('・') {
+            let tmp_txts = e.features[0].properties.name.split('・').map((oaza) => 
+                '<p><a href=">' 
+                + getLinkTextOaza(oaza, e.features[0].properties.region)
+                + '" target="_blank" rel="noopener noreferrer">'
+                + getRegionNameOaza(oaza, e.features[0].properties.region)
+                + '</a></p>'    
+            );
             new maplibregl.Popup({closeButton: false})
                 .setLngLat(e.lngLat)
                 .setHTML(
                     '<div class="popup-oaza">'
-                    + e.features[0].properties.name.split('・').map((oaza) => 
-                        '<p><a href=">' 
-                        + getLinkTextOaza(oaza, e.features[0].properties.region)
-                        + '" target="_blank" rel="noopener noreferrer">'
-                        + getRegionNameOaza(oaza, e.features[0].properties.region)
-                        + '</a></p>'    
-                    ).join('')
+                    + tmp_txts.join('')
                     + '<p><入会地</p></div>'
                 ).addTo(map);
         } else if (e.features[0].properties.region != '(旧村)') {
