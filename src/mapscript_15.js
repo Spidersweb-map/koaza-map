@@ -191,7 +191,8 @@ function initMap() {
             layout: getMapLabelLayout('Regular', 'small'),
             paint: {
                 'text-color': mapColorBlue, 
-                'text-opacity': queries.opacityTop * 0.9, 
+                // 'text-opacity': queries.opacityTop * 0.9, 
+                'text-opacity': ['case', ['==', ['get', 'region'], 'temporary'], queries.opacityTop * 0.45, queries.opacityTop * 0.9],
                 'text-halo-width': mapLabelHaloWidth,
                 'text-halo-blur': mapLabelHaloBlur,
                 'text-halo-color': mapLabelHaloColor
@@ -262,7 +263,7 @@ function initMap() {
                     + tmp_txts.join('')
                     + '</div>'
                 ).addTo(map);
-        } else {
+        } else if (e.features[0].properties.region != 'temporary') {
             new maplibregl.Popup({closeButton: false})
                 .setLngLat(e.lngLat)
                 .setHTML(
@@ -427,8 +428,9 @@ function handleTopOpacityChange(val) {
     map.setPaintProperty('small_dist', 'line-opacity', opacity);
     map.setPaintProperty('big_dist_dashed', 'line-opacity', ['case', ['==', ['get', 'line_style'], 'trnsdashed'], opacity * 0.6, opacity]);
     map.setPaintProperty('big_dist', 'line-opacity', ['case', ['==', ['get', 'line_style'], 'trnsnormal'], opacity * 0.6, opacity]);
-    map.setPaintProperty('small_name', 'text-opacity', opacity * 0.9);
-    map.setPaintProperty('big_name', 'text-opacity', ['case', ['==', ['get', 'region'], '(旧村)'], opacity * 0.42, opacity * 0.7]);
+    // map.setPaintProperty('small_name', 'text-opacity', opacity * 0.9);
+    map.setPaintProperty('small_name', 'text-opacity', ['case', ['==', ['get', 'region'], 'temporary'], opacity * 0.45, opacity * 0.9]);
+    map.setPaintProperty('big_name', 'text-opacity', ['case', ['==', ['get', 'region'], '(旧村)'], opacity * 0.45, opacity * 0.7]);
     url.searchParams.set('opacityTop', opacity);
     history.replaceState(null, pageName, url);
 };
