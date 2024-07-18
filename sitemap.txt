@@ -1,6 +1,7 @@
 https://spidersweb-map.github.io/koaza-map/index.html
 https://spidersweb-map.github.io/koaza-map/src/showMap.html
 https://spidersweb-map.github.io/koaza-map/pages/三浦郡.html
+https://spidersweb-map.github.io/koaza-map/pages/下埴生郡.html
 https://spidersweb-map.github.io/koaza-map/pages/久良岐郡.html
 https://spidersweb-map.github.io/koaza-map/pages/北多摩郡.html
 https://spidersweb-map.github.io/koaza-map/pages/北豊島郡.html
