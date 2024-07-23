@@ -26,4 +26,5 @@ https://spidersweb-map.github.io/koaza-map/pages/西多摩郡.html
 https://spidersweb-map.github.io/koaza-map/pages/足柄上郡.html
 https://spidersweb-map.github.io/koaza-map/pages/都築郡.html
 https://spidersweb-map.github.io/koaza-map/pages/鎌倉郡.html
+https://spidersweb-map.github.io/koaza-map/pages/香取郡.html
 https://spidersweb-map.github.io/koaza-map/pages/高座郡.html
