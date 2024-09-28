@@ -315,7 +315,7 @@ function getRegionName(region) {
         return "(所属不明)"
     } else {
         const lastChar = ["村","町","宿","区","組","駅"];
-        const excludeName = ["松田惣領", "松田庶子", "小原"];
+        const excludeName = ["松田惣領", "松田庶子", "小原", "川村岸", "川村向原", "川村山北"];
         const excludeRegion = ["区部", "島嶼部"];
         var gun = region.split("(")[1].replace(")","");
         var mura = region.split("(")[0];
