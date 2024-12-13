@@ -333,7 +333,7 @@ function getRegionName(region) {
         ) {
             mura += "村";
         };
-        if includeName.includes(region) {
+        if (includeName.includes(region)) {
             mura += "村";
         };
         return gun + mura;
