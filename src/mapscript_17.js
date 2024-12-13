@@ -317,6 +317,7 @@ function getRegionName(region) {
         const lastChar = ["村","町","宿","区","組","駅"];
         const excludeName = ["松田惣領", "松田庶子", "小原", "川村岸", "川村向原", "川村山北"];
         const excludeRegion = ["区部", "島嶼部"];
+        const includeName = ["今宿(都筑)"];
         var gun = region.split("(")[1].replace(")","");
         var mura = region.split("(")[0];
         if (excludeRegion.includes(gun)) {
@@ -330,6 +331,9 @@ function getRegionName(region) {
             && !(mura.includes("新田") && mura.length != 2) 
             && !mura.endsWith("丁目")
         ) {
+            mura += "村";
+        };
+        if includeName.includes(region) {
             mura += "村";
         };
         return gun + mura;
