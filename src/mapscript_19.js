@@ -7,8 +7,9 @@ function initMap() {
     url = new URL(window.location.href);
     pageName = "小字マップ";
     baseMapNames = ['gsi_pale', 'gsi_std', 'gsi_seamless', 'gsi_4550', 'gsi_6169'];
-
+    
     var queries = getMapData(url);
+    latestPopup = null
 
     // スライダの位置等を調整
     document.getElementById("opacityBase").value = queries.opacityBase * 100;
@@ -280,6 +281,10 @@ function initMap() {
     
     // ポップアップ表示(大字名)
     map.on('click', 'big_name', (e) => {
+        if (document.getElementById("infoContainer").style.visibility == "visible") {
+            // infoContainerが表示されている場合にのみ情報取得
+            getDetails(e.features[0].properties.name, e.features[0].properties.region)
+        }
         if (e.features[0].properties.name.includes('・')) {
             let tmp_txts = e.features[0].properties.name.split('・').map((oaza) => 
                 '<p><a href="' 
@@ -288,15 +293,16 @@ function initMap() {
                 + getRegionNameOaza(oaza, e.features[0].properties.region)
                 + '</a></p>'    
             );
-            new maplibregl.Popup({closeButton: false})
+            latestPopup = new maplibregl.Popup({closeButton: false})
                 .setLngLat(e.lngLat)
                 .setHTML(
                     '<div class="popup-oaza">'
                     + tmp_txts.join('')
                     + '<p>入会地</p></div>'
-                ).addTo(map);
+                )
+            latestPopup.addTo(map);
         } else if (e.features[0].properties.region != '(旧村)') {
-            new maplibregl.Popup({closeButton: false})
+            latestPopup = new maplibregl.Popup({closeButton: false})
                 .setLngLat(e.lngLat)
                 .setHTML(
                     '<div class="popup-oaza"><p><a href="'
@@ -304,8 +310,38 @@ function initMap() {
                     + '" target="_blank" rel="noopener noreferrer">'
                     + getRegionNameOaza(e.features[0].properties.name, e.features[0].properties.region)
                     + '</a></p></div>'
-                ).addTo(map);
+                );
+            latestPopup.addTo(map);
         };
+    });
+    
+    // 情報ウインドウ
+    var infoContainerHandle = document.getElementById("infoContainerHandle");
+    infoContainerHandle.addEventListener('mousedown', (e) => {
+        e.preventDefault();       
+        if (window.innerWidth > 500) {
+            // 横方向にリサイズ
+            var startX = e.clientX;
+            var startWidth = infoContainerHandle.parentNode.offsetWidth;
+            var onMouseMove = (e) => {
+                var delta = e.clientX - startX;
+                infoContainerHandle.parentNode.style.width = `max(5em, min(calc(90% - 2em), ${startWidth + delta}px))`;
+            };
+        } else {
+            // 縦方向にリサイズ
+            var startY = e.clientY;
+            var startHeight = infoContainerHandle.parentNode.offsetHeight;
+            var onMouseMove = (e) => {
+                var delta = e.clientY - startY;
+                infoContainerHandle.parentNode.style.height = `max(5em, min(calc(90% - 5em), ${startHeight - delta}px))`;
+            };
+        };
+        var onMouseUp = () => {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        };
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
     });
 };
 
@@ -532,4 +568,55 @@ function handleLocation() {
     } else {
         handleLocationError(false);
     }
+}
+
+
+function handleInfoExpand() {
+    // ポップアップ表示状態でクリックされた場合はinfoContainer表示時に情報取得
+    if (latestPopup != null && latestPopup.isOpen()) {
+        var popupElem = latestPopup.getElement()
+        var nameRegion = popupElem.querySelector('a').href.match(/#(.*?)_(.*)/)
+        getDetails(decodeURIComponent(nameRegion[1]), decodeURIComponent(nameRegion[2]))
+    }
+    document.getElementById("infoContainer").style.visibility = "visible"
+    document.getElementById("infoExpandBtn").style.visibility = "hidden"
+}
+
+
+function handleInfoClose() {
+    document.getElementById("infoContainer").style.visibility = "hidden"
+    document.getElementById("infoExpandBtn").style.visibility = "visible"
+}
+
+
+async function getDetails(nameStr, regionStr) {
+    // console.log("getting data... ")
+    const taget_url = getLinkTextOaza(nameStr, regionStr)
+    const url = "https://spidersweb-map.github.io/koaza-map/" + encodeURI(taget_url.slice(3))
+//    console.log(`${feature.name}_${feature.region}`)
+    var xmlReq = new XMLHttpRequest();
+    xmlReq.open("GET", url, true)
+    xmlReq.onreadystatechange = function() {
+        if (xmlReq.readyState == 4 && xmlReq.status == 200) {
+            var parser = new DOMParser();
+            var target_info = parser.parseFromString(xmlReq.responseText, 'text/html').getElementById(`${nameStr}_${regionStr}`);
+            target_info.querySelector('a').remove();
+            target_info.querySelector('h2').innerText = getRegionName(`${nameStr}(${regionStr})`)
+            
+            var infoLink = document.createElement('a')
+            infoLink.setAttribute('href', taget_url)
+            infoLink.setAttribute('target', '_blank')
+            infoLink.setAttribute('rel', 'noopener noreferrer')
+            infoLink.appendChild(document.createTextNode("情報ページを開く"))
+            target_info.appendChild(document.createElement('br'))
+            target_info.appendChild(infoLink)
+                        
+            var info_indow = document.getElementById("infoArea")
+            if (info_indow.hasChildNodes()) {
+                info_indow.removeChild(info_indow.firstChild)
+            }
+            info_indow.appendChild(target_info)
+        }
+    }
+    xmlReq.send(null)
 }

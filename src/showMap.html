@@ -10,7 +10,7 @@
     <!-- PMTiles読み込み -->
     <script src="https://unpkg.com/pmtiles@3.0.5/dist/pmtiles.js"></script>
     <!--  スクリプトファイル読み込み -->
-    <script src="mapscript_18.js" charset="UTF-8"></script>
+    <script src="mapscript_19.js" charset="UTF-8"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS498W9N28"></script>
     <script>
@@ -20,7 +20,7 @@
     
       gtag('config', 'G-MS498W9N28');
     </script>
-    <link rel="stylesheet" href="mapstyle.css"/>
+    <link rel="stylesheet" href="mapstyle_2.css"/>
 </head>
 <body>
     <div id="map"></div>
@@ -56,7 +56,15 @@
     <div id="header">
         <h1><a href="showMap.html" id="header-title">小字マップ</a></h1>
         <p><a href="../index.html" id="header-about">About</a></p>
-    <div>
+    </div>
+    <div id="infoContainer">
+        <button id="infoCloseBtn" onClick="handleInfoClose()"><img alt="expand information" class="icon-img" src="images/close_info.svg"></button>
+        <div id="infoContainerWrapper">
+            <div id="infoArea"><p>地名が選択されていません</p></div>
+        </div>
+        <div id="infoContainerHandle" ></div>
+    </div>
+    <button id="infoExpandBtn" onClick="handleInfoExpand()"><img alt="expand information" class="icon-img" src="images/expand_info.svg"></button>
     <script>initMap()</script>
 </body>
 
