@@ -6,7 +6,7 @@ function initMap() {
     // 他の関数でも使うものはグローバル変数に格納
     url = new URL(window.location.href);
     pageName = "小字マップ";
-    baseMapNames = ['gsi_pale', 'gsi_std', 'gsi_seamless', 'gsi_4550', 'gsi_6169'];
+    baseMapNames = ['gsi_pale', 'gsi_std', 'gsi_seamless', 'gsi_4550', 'gsi_6169', 'OSM'];
     
     var queries = getMapData(url);
     latestPopup = null
@@ -125,6 +125,12 @@ function initMap() {
             tiles: ['https://cyberjapandata.gsi.go.jp/xyz/ort_old10/{z}/{x}/{y}.png'],
             tileSize: 256,
             attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>空中写真（1961年～1969年）</a>"
+        });
+        map.addSource('OSM', {
+            type: 'raster',
+            tiles: ['https://tile.openstreetmap.jp/{z}/{x}/{y}.png'],
+            tileSize: 256,
+            attribution: "<a href='https://www.openstreetmap.org/copyright' target='_blank'>&copy; OpenStreetMap</a>"
         });
 
         // PMTiles読み込み
@@ -546,10 +552,10 @@ function addMapMesh(isVisibleNum) {
 
 function addBaseMap(mapName) {
     map.addLayer({
-       id: mapName,
-       type: 'raster',
-       source: mapName,
-       paint: {'raster-opacity': Number(url.searchParams.get('opacityBase'))},
+        id: mapName,
+        type: 'raster',
+        source: mapName,
+        paint: {'raster-opacity': Number(url.searchParams.get('opacityBase'))},
     }, baseMapNames[0]);
 };
 

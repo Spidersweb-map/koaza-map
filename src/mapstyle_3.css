@@ -49,6 +49,7 @@ html, body, #map {
     background-color: white;
     border: 2px solid #dddddd;
     border-radius: 6px;
+    padding: 0;
 }
 
 #topButtonArea button:hover {

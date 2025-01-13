@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>小字マップ</title>
+    <link rel="icon" href="images/favicon.ico">
     <!--  MapLibre読み込み  -->
     <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css">
     <!-- PMTiles読み込み -->
     <script src="https://unpkg.com/pmtiles@3.0.5/dist/pmtiles.js"></script>
     <!--  スクリプトファイル読み込み -->
-    <script src="mapscript_19.js" charset="UTF-8"></script>
+    <script src="mapscript_20.js" charset="UTF-8"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS498W9N28"></script>
     <script>
@@ -20,7 +21,7 @@
     
       gtag('config', 'G-MS498W9N28');
     </script>
-    <link rel="stylesheet" href="mapstyle_2.css"/>
+    <link rel="stylesheet" href="mapstyle_3.css"/>
 </head>
 <body>
     <div id="map"></div>
@@ -45,7 +46,9 @@
             <input type="radio" name="basemap" id="gsi_4550" value="gsi_4550" onChange="handleBasemapSelect(this.value)"/>
             <label for="gsi_4550">空中写真<br>（1945-1950：S20-S25）</label><br>
             <input type="radio" name="basemap" id="gsi_6169" value="gsi_6169" onChange="handleBasemapSelect(this.value)"/>
-            <label for="gsi_6169">空中写真<br>（1961-1969：S36-S44）</label>
+            <label for="gsi_6169">空中写真<br>（1961-1969：S36-S44）</label><br>
+            <input type="radio" name="basemap" id="OSM" value="OSM" onChange="handleBasemapSelect(this.value)"/>
+            <label for="OSM">OpenStreetMap</label>
         </div>
         <p>ほか情報</p>
         <div>
