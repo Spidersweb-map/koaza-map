@@ -323,6 +323,7 @@ function initMap() {
     
     // 情報ウインドウ
     var infoContainerHandle = document.getElementById("infoContainerHandle");
+    // マウス操作
     infoContainerHandle.addEventListener('mousedown', (e) => {
         e.preventDefault();       
         if (window.innerWidth > 500) {
@@ -349,6 +350,34 @@ function initMap() {
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
     });
+    // タッチ操作
+    infoContainerHandle.addEventListener('touchstart', (e) => {
+        e.preventDefault();       
+        if (window.innerWidth > 500) {
+            // 横方向にリサイズ
+            var startX = e.clientX;
+            var startWidth = infoContainerHandle.parentNode.offsetWidth;
+            var onMouseMove = (e) => {
+                var delta = e.clientX - startX;
+                infoContainerHandle.parentNode.style.width = `max(5em, min(calc(90% - 2em), ${startWidth + delta}px))`;
+            };
+        } else {
+            // 縦方向にリサイズ
+            var startY = e.clientY;
+            var startHeight = infoContainerHandle.parentNode.offsetHeight;
+            var onMouseMove = (e) => {
+                var delta = e.clientY - startY;
+                infoContainerHandle.parentNode.style.height = `max(5em, min(calc(90% - 5em), ${startHeight - delta}px))`;
+            };
+        };
+        var onMouseUp = () => {
+            document.removeEventListener('touchmove', onMouseMove);
+            document.removeEventListener('touchend', onMouseUp);
+        };
+        document.addEventListener('touchmove', onMouseMove);
+        document.addEventListener('touchend', onMouseUp);
+    });
+    
 };
 
 
